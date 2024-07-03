@@ -1,5 +1,13 @@
 .app {
+  margin: 15px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 30px 15px;
+  gap: 15px;
+  max-width: 800px;
+}
+
+.main-title {
+  text-align: center;
 }
