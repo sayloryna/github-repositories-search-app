@@ -23,7 +23,18 @@ const RepositoryCard = ({
           <h2 className="repository__name">{repository.name}</h2>
         </a>
       </div>
-      <span className="repository__language">{repository.laguage}</span>
+      <div className="repository__language">
+        <img
+          className="repository__language-badge"
+          src={
+            repository.language === "HTML"
+              ? `https://img.shields.io/badge/-HTML-ffffff?style=flat-square&logo=HTML5&logoColor=black`
+              : `https://img.shields.io/badge/-${repository.language}-ffffff?style=flat-square&logo=${repository.language}&logoColor=black`
+          }
+          alt={repository.language}
+          height="55"
+        ></img>
+      </div>
     </article>
   );
 };

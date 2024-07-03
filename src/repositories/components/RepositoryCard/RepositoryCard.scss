@@ -8,21 +8,31 @@
   padding: 15px;
 
   &__owner-avatar {
-    width: 30px;
-    height: auto;
+    width: auto;
+    height: 50px;
     border-radius: 50%;
   }
 
   &__name {
     color: blue;
+    font-size: 1.5rem;
   }
 
   &__language {
-    font-size: 0.9rem;
+    display: flex;
+    width: auto;
+    max-width: 200px;
+    height: 2.2rem;
+    align-items: center;
+
+    &-badge {
+      height: 100%;
+      width: auto;
+    }
   }
 }
-
 .header {
+  width: fit-content;
   display: flex;
   gap: 15px;
 }

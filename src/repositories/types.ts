@@ -6,6 +6,6 @@ export interface Repository {
     avatar_url: string;
     html_url: string;
   };
-  laguage: string;
+  language: string;
   status?: number;
 }
