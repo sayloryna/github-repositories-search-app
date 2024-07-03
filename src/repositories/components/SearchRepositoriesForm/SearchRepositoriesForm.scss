@@ -1,0 +1,34 @@
+.form {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  &__searchbox {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border: 1px solid #aaa;
+    padding: 8px 5px;
+    border-radius: 10px;
+    width: 100%;
+    justify-content: space-between;
+
+    &:focus-within {
+      border: 2px solid blue;
+    }
+  }
+}
+
+.username {
+  padding: 3px 5px;
+  min-width: 80%;
+}
+
+.submitButton {
+  display: flex;
+  border-left: 1px solid #aaa;
+  align-items: center;
+  justify-content: center;
+}
