@@ -13,7 +13,7 @@ export const RepositoriesSlice = createSlice({
     loadRepositories: (currentState, action: PayloadAction<Repository[]>) => {
       return {
         ...currentState,
-        Repositories: action.payload,
+        repositories: action.payload,
       };
     },
   },
