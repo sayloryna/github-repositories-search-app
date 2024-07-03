@@ -8,7 +8,8 @@ export const testRepository1: Repository = {
     avatar_url: "https://avatars.githubusercontent.com/u/128187875?v=4",
     html_url: "https://github.com/mockUsername",
   },
-  language: "HTML",
+  language: "JavaScript",
+  description: "A test repository for my project",
 };
 
 export const testRepository2: Repository = {
@@ -20,6 +21,7 @@ export const testRepository2: Repository = {
     html_url: "https://github.com/mockUsername",
   },
   language: "TypeScript",
+  description: "",
 };
 
 export const testRepository3: Repository = {
@@ -31,4 +33,5 @@ export const testRepository3: Repository = {
     html_url: "https://github.com/mockUsername",
   },
   language: "TypeScript",
+  description: "",
 };

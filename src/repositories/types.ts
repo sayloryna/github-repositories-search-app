@@ -7,5 +7,5 @@ export interface Repository {
     html_url: string;
   };
   language: string;
-  status?: number;
+  description: string;
 }

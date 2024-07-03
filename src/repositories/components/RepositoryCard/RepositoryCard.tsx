@@ -23,6 +23,7 @@ const RepositoryCard = ({
           <h2 className="repository__name">{repository.name}</h2>
         </a>
       </div>
+      <p className="repository__description">{repository.description}</p>
       <div className="repository__language">
         <img
           className="repository__language-badge"
