@@ -7,4 +7,5 @@ export interface Repository {
     html_url: string;
   };
   laguage: string;
+  status?: number;
 }

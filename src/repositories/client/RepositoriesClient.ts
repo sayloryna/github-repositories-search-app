@@ -13,13 +13,8 @@ class RepositoriesClient implements RepositoriesClientStructure {
       const repos = response.data as Repository[];
 
       return repos;
-    } catch (error) {
-      const errorMessage = (error as Error).message;
-
-      if (errorMessage === "Not found") {
-        throw new Error(`Sorry we couldn't find the user:${username} `);
-      }
-      throw new Error(errorMessage);
+    } catch {
+      throw new Error(`Couldn't find repos for user: ${username}`);
     }
   }
 }
