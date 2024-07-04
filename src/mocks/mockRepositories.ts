@@ -8,7 +8,9 @@ export const testRepository1: Repository = {
     avatar_url: "https://avatars.githubusercontent.com/u/128187875?v=4",
     html_url: "https://github.com/mockUsername",
   },
-  laguage: "TypeScript",
+  language: "JavaScript",
+  description: "A test repository for my project",
+  pushed_at: new Date("2024-01-13T03:06:12Z"),
 };
 
 export const testRepository2: Repository = {
@@ -19,7 +21,9 @@ export const testRepository2: Repository = {
     avatar_url: "https://avatars.githubusercontent.com/u/128187875?v=4",
     html_url: "https://github.com/mockUsername",
   },
-  laguage: "TypeScript",
+  language: "TypeScript",
+  description: "",
+  pushed_at: new Date("2024-01-13T03:06:12Z"),
 };
 
 export const testRepository3: Repository = {
@@ -30,5 +34,7 @@ export const testRepository3: Repository = {
     avatar_url: "https://avatars.githubusercontent.com/u/128187875?v=4",
     html_url: "https://github.com/mockUsername",
   },
-  laguage: "TypeScript",
+  language: "TypeScript",
+  description: "",
+  pushed_at: new Date("2024-01-13T03:06:12Z"),
 };

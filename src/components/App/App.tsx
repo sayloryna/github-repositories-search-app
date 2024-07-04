@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.scss";
 import SearchRepositoriesForm from "../../repositories/components/SearchRepositoriesForm/SearchRepositoriesForm";
+import "./App.scss";
 
 const App = (): React.ReactElement => {
   return (

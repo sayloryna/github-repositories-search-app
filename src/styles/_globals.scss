@@ -6,15 +6,23 @@
 
 body {
   margin: 0;
-  font-family: "Rosario", sans-serif;
+  font-family: "Segoe UI", Tahoma, "Geneva", Verdana, sans-serif;
 }
 
 input {
   all: unset;
 }
 
-h1 {
+h1,
+h2,
+p {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
 }
 
 button {

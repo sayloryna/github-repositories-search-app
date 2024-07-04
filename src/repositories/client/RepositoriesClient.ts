@@ -1,7 +1,7 @@
 import axios from "axios";
-
 import { RepositoriesClientStructure } from "./types";
-import { Repository } from "../types";
+import { Repository, RepositoryDto } from "../types";
+import convertRepositoryDTOtoRepository from "../DTO/convertRepositoryDTOtoRepository";
 
 class RepositoriesClient implements RepositoriesClientStructure {
   async getAllRepos(username: string): Promise<Repository[]> {
@@ -10,7 +10,10 @@ class RepositoriesClient implements RepositoriesClientStructure {
         `https://api.github.com/users/${username}/repos`,
       );
 
-      const repos = response.data as Repository[];
+      const reposDto = response.data as RepositoryDto[];
+      const repos = reposDto.map((repo: RepositoryDto): Repository => {
+        return convertRepositoryDTOtoRepository(repo);
+      });
 
       return repos;
     } catch {

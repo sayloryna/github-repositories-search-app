@@ -1,0 +1,58 @@
+.repository {
+  display: flex;
+  color: #222;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  padding: 15px;
+
+  &__owner-avatar {
+    width: auto;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    color: #0969da;
+    font-size: 1.6rem;
+  }
+
+  &__description {
+    padding-left: 11px;
+    font-size: 1.1rem;
+  }
+
+  &__language {
+    width: auto;
+    max-width: 200px;
+    height: 1.9rem;
+
+    &-badge {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &__update {
+    font-size: 0.9rem;
+  }
+}
+
+.header {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  @media (width < 400px) {
+    gap: 5px;
+  }
+}
