@@ -1,6 +1,7 @@
 import { useAppSelector } from "../../../store/hooks";
 import { Repository } from "../../types";
 import RepositoryCard from "../RepositoryCard/RepositoryCard";
+import "./RepositoriesList.scss";
 
 const RepositoriesList = (): React.ReactElement => {
   const { repositories } = useAppSelector((state) => state.repositoriesReducer);
