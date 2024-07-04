@@ -10,6 +10,7 @@ export const testRepository1: Repository = {
   },
   language: "JavaScript",
   description: "A test repository for my project",
+  pushed_at: new Date("2024-01-13T03:06:12Z"),
 };
 
 export const testRepository2: Repository = {
@@ -22,6 +23,7 @@ export const testRepository2: Repository = {
   },
   language: "TypeScript",
   description: "",
+  pushed_at: new Date("2024-01-13T03:06:12Z"),
 };
 
 export const testRepository3: Repository = {
@@ -34,4 +36,5 @@ export const testRepository3: Repository = {
   },
   language: "TypeScript",
   description: "",
+  pushed_at: new Date("2024-01-13T03:06:12Z"),
 };

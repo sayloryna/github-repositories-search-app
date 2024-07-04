@@ -1,4 +1,4 @@
-export interface Repository {
+export interface RepositoryDto {
   id: number;
   name: string;
   html_url: string;
@@ -8,4 +8,9 @@ export interface Repository {
   };
   language: string;
   description: string;
+  pushed_at: string;
+}
+
+export interface Repository extends Omit<RepositoryDto, "pushed_at"> {
+  pushed_at: Date;
 }
