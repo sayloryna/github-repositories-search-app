@@ -12,6 +12,22 @@ const RepositoryCard = ({
 }: RepositoryProps): React.ReactElement => {
   const updatedDate = format(repository.pushed_at, "MMM d");
 
+  const hasNotProgramingLanguage = repository.language === null;
+  const getBadge = (language: string) => {
+    if (!language) {
+      return "";
+    }
+
+    if (language === "HTML") {
+      return "https://img.shields.io/badge/-HTML-ffffff?style=flat-square&logo=HTML5&logoColor=black";
+    }
+
+    if (language === "CSS") {
+      return "https://img.shields.io/badge/-CSS-ffffff?style=flat-square&logo=CSS3&logoColor=black";
+    }
+    return `https://img.shields.io/badge/-${language}-ffffff?style=flat-square&logo=${language}&logoColor=black`;
+  };
+
   return (
     <article className="repository">
       <div className="header">
@@ -28,14 +44,10 @@ const RepositoryCard = ({
       </div>
       <p className="repository__description">{repository.description}</p>
       <div className="footer">
-        <div className="repository__language">
+        <div className="repository__language" hidden={hasNotProgramingLanguage}>
           <img
             className="repository__language-badge"
-            src={
-              repository.language === "HTML"
-                ? `https://img.shields.io/badge/-HTML-ffffff?style=flat-square&logo=HTML5&logoColor=black`
-                : `https://img.shields.io/badge/-${repository.language}-ffffff?style=flat-square&logo=${repository.language}&logoColor=black`
-            }
+            src={getBadge(repository.language)}
             alt={repository.language}
             height="55"
           ></img>
