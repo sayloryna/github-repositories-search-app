@@ -8,6 +8,7 @@ import {
 
 const initialState: RepositoriesState = {
   repositories: [testRepository1, testRepository2, testRepository3],
+  repositoriNameFilter: "",
 };
 
 export const MockRepositoriesSlice = createSlice({

@@ -1,0 +1,14 @@
+.filter-form {
+  align-self: flex-end;
+  background-color: #e0e0e042;
+
+  @media (width >500px) {
+    min-width: 350px;
+  }
+}
+
+.form__searchbox--small {
+  padding: 5px;
+  border: none;
+  border-radius: 0;
+}
