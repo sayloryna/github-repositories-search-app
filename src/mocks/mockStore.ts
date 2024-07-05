@@ -1,6 +1,5 @@
-import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { RepositoriesState } from "../repositories/slice/types";
-import { Repository } from "../repositories/types";
 import {
   testRepository1,
   testRepository2,
@@ -14,14 +13,7 @@ const initialState: RepositoriesState = {
 export const MockRepositoriesSlice = createSlice({
   name: "mockrepositories",
   initialState,
-  reducers: {
-    loadRepositories: (currentState, action: PayloadAction<Repository[]>) => {
-      return {
-        ...currentState,
-        repositories: action.payload,
-      };
-    },
-  },
+  reducers: {},
 });
 
 const repositoriesReducer = MockRepositoriesSlice.reducer;

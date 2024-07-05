@@ -1,7 +1,7 @@
 import React from "react";
+import { format } from "date-fns";
 import { Repository } from "../../types";
 import "./RepositoryCard.scss";
-import { format } from "date-fns";
 
 type RepositoryProps = {
   repository: Repository;

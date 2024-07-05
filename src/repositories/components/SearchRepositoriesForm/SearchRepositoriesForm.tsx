@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import RepositoriesClient from "../../client/RepositoriesClient";
+import { notifyError } from "../../../notify/notifyError";
 import SearchIcon from "../SearchIcon/SearchIcon";
-import "./SearchRepositoriesForm.scss";
 import { useAppDispatch } from "../../../store/hooks";
 import { loadRepositoriesActionCreator } from "../../slice/repositoriesSlice";
+import { Repository } from "../../types";
+import "./SearchRepositoriesForm.scss";
 
 const client = new RepositoriesClient();
 
 const SearchRepositoriesForm = (): React.ReactElement => {
-  const [username, setUsername] = useState("");
+  const initialUsernameState = "";
+  const [username, setUsername] = useState(initialUsernameState);
   const dispatch = useAppDispatch();
   return (
     <form
@@ -16,10 +19,26 @@ const SearchRepositoriesForm = (): React.ReactElement => {
       onSubmit={async (event) => {
         event.preventDefault();
 
-        const repositories = await client.getAllRepos(username.trim());
-        const loadRepositories = loadRepositoriesActionCreator(repositories);
-        dispatch(loadRepositories);
-        setUsername("");
+        try {
+          const newRepositories = await client.getAllRepos(username.trim());
+
+          const loadRepositories =
+            loadRepositoriesActionCreator(newRepositories);
+
+          dispatch(loadRepositories);
+        } catch {
+          const emptyRepositoriesList: Repository[] = [];
+
+          const loadEmptyRepositoriesList = loadRepositoriesActionCreator(
+            emptyRepositoriesList,
+          );
+
+          notifyError(`Unable to get repositories from user: ${username}`);
+
+          dispatch(loadEmptyRepositoriesList);
+        }
+
+        setUsername(initialUsernameState);
       }}
     >
       <div className="form__searchbox">
