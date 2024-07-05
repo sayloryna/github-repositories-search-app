@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAppDispatch } from "../../../store/hooks";
 import { loadRepositoryNameFilterActionCreator } from "../../slice/repositoriesSlice";
 import "./RepositoryNameFilter.scss";
+import SearchIcon from "../SearchIcon/SearchIcon";
 
 const RepositoryNameFilterForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -22,7 +23,7 @@ const RepositoryNameFilterForm = (): React.ReactElement => {
     >
       <div className="form__searchbox form__searchbox--small">
         <input
-          aria-label="Find a repository"
+          aria-label="repository name"
           className="repository-name"
           type="text"
           id="name"
@@ -36,7 +37,9 @@ const RepositoryNameFilterForm = (): React.ReactElement => {
           className="submitButton"
           type="submit"
           aria-label="Find repository"
-        ></button>
+        >
+          <SearchIcon color="grey" name="Find repository" />
+        </button>
       </div>
     </form>
   );
