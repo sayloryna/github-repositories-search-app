@@ -4,8 +4,23 @@ import SearchIcon from "../SearchIcon/SearchIcon";
 import "./SearchRepositoriesForm.scss";
 import { useAppDispatch } from "../../../store/hooks";
 import { loadRepositoriesActionCreator } from "../../slice/repositoriesSlice";
+import { toast, Bounce } from "react-toastify";
 
 const client = new RepositoriesClient();
+
+const notifyError = (errorMessage: string) => {
+  toast.error(errorMessage, {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    transition: Bounce,
+  });
+};
 
 const SearchRepositoriesForm = (): React.ReactElement => {
   const [username, setUsername] = useState("");
@@ -24,7 +39,7 @@ const SearchRepositoriesForm = (): React.ReactElement => {
           dispatch(loadRepositories);
         } catch {
           const loadRepositories = loadRepositoriesActionCreator([]);
-
+          notifyError(`Unable to get repositories from user: ${username}`);
           dispatch(loadRepositories);
         }
 
