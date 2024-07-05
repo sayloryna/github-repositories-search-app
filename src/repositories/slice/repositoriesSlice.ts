@@ -4,6 +4,7 @@ import { RepositoriesState } from "./types";
 
 const initialState: RepositoriesState = {
   repositories: [],
+  repositoriNameFilter: "",
 };
 
 export const RepositoriesSlice = createSlice({
@@ -16,10 +17,19 @@ export const RepositoriesSlice = createSlice({
         repositories: action.payload,
       };
     },
+
+    loadRepositoryNameFilter: (currentState, action: PayloadAction<string>) => {
+      return {
+        ...currentState,
+        repositoriNameFilter: action.payload,
+      };
+    },
   },
 });
 
-export const { loadRepositories: loadRepositoriesActionCreator } =
-  RepositoriesSlice.actions;
+export const {
+  loadRepositories: loadRepositoriesActionCreator,
+  loadRepositoryNameFilter: loadRepositoryNameFilterActionCreator,
+} = RepositoriesSlice.actions;
 
 export const repositoriesReducer = RepositoriesSlice.reducer;
