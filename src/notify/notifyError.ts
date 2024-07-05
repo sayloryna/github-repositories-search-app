@@ -11,5 +11,6 @@ export const notifyError = (errorMessage: string) => {
     progress: undefined,
     theme: "colored",
     transition: Bounce,
+    role: "alert",
   });
 };

@@ -1,7 +1,7 @@
 import React from "react";
+import { Bounce, ToastContainer } from "react-toastify";
 import SearchRepositoriesForm from "../../repositories/components/SearchRepositoriesForm/SearchRepositoriesForm";
 import RepositoriesList from "../../repositories/components/RepositoriesList/RepositoriesList";
-import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
 
