@@ -16,9 +16,18 @@ const SearchRepositoriesForm = (): React.ReactElement => {
       onSubmit={async (event) => {
         event.preventDefault();
 
-        const repositories = await client.getAllRepos(username.trim());
-        const loadRepositories = loadRepositoriesActionCreator(repositories);
-        dispatch(loadRepositories);
+        try {
+          const repositories = await client.getAllRepos(username.trim());
+
+          const loadRepositories = loadRepositoriesActionCreator(repositories);
+
+          dispatch(loadRepositories);
+        } catch {
+          const loadRepositories = loadRepositoriesActionCreator([]);
+
+          dispatch(loadRepositories);
+        }
+
         setUsername("");
       }}
     >
