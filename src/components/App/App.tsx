@@ -12,9 +12,9 @@ const App = (): React.ReactElement => {
       <SearchRepositoriesForm />
       <RepositoriesList />
       <ToastContainer
-        position="top-right"
-        autoClose={false}
-        newestOnTop={false}
+        position="top-center"
+        autoClose={5000}
+        newestOnTop={true}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss={false}
@@ -22,6 +22,7 @@ const App = (): React.ReactElement => {
         theme="colored"
         transition={Bounce}
         role="alert"
+        limit={3}
       />
     </div>
   );

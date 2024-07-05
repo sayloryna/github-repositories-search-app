@@ -1,29 +1,17 @@
 import React, { useState } from "react";
 import RepositoriesClient from "../../client/RepositoriesClient";
 import SearchIcon from "../SearchIcon/SearchIcon";
-import "./SearchRepositoriesForm.scss";
 import { useAppDispatch } from "../../../store/hooks";
 import { loadRepositoriesActionCreator } from "../../slice/repositoriesSlice";
-import { toast, Bounce } from "react-toastify";
+import { Repository } from "../../types";
+import "./SearchRepositoriesForm.scss";
+import { notifyError } from "../../../notify/notifyError";
 
 const client = new RepositoriesClient();
 
-const notifyError = (errorMessage: string) => {
-  toast.error(errorMessage, {
-    position: "bottom-center",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-    transition: Bounce,
-  });
-};
-
 const SearchRepositoriesForm = (): React.ReactElement => {
-  const [username, setUsername] = useState("");
+  const initialUsernameState = "";
+  const [username, setUsername] = useState(initialUsernameState);
   const dispatch = useAppDispatch();
   return (
     <form
@@ -32,18 +20,25 @@ const SearchRepositoriesForm = (): React.ReactElement => {
         event.preventDefault();
 
         try {
-          const repositories = await client.getAllRepos(username.trim());
+          const newRepositories = await client.getAllRepos(username.trim());
 
-          const loadRepositories = loadRepositoriesActionCreator(repositories);
+          const loadRepositories =
+            loadRepositoriesActionCreator(newRepositories);
 
           dispatch(loadRepositories);
         } catch {
-          const loadRepositories = loadRepositoriesActionCreator([]);
+          const emptyRepositoriesList: Repository[] = [];
+
+          const loadEmptyRepositoriesList = loadRepositoriesActionCreator(
+            emptyRepositoriesList,
+          );
+
           notifyError(`Unable to get repositories from user: ${username}`);
-          dispatch(loadRepositories);
+
+          dispatch(loadEmptyRepositoriesList);
         }
 
-        setUsername("");
+        setUsername(initialUsernameState);
       }}
     >
       <div className="form__searchbox">
