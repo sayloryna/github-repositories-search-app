@@ -8,8 +8,12 @@ import {
 
 const initialState: RepositoriesState = {
   repositories: [testRepository1, testRepository2, testRepository3],
+  languagesUsed: [
+    testRepository1.language,
+    testRepository2.language,
+    testRepository3.language,
+  ],
   repositoryNameFilter: "",
-  languagesUsed: [],
   repositoryLanguageFilter: "",
 };
 

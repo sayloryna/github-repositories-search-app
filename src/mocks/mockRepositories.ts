@@ -34,7 +34,7 @@ export const testRepository3: Repository = {
     avatar_url: "https://avatars.githubusercontent.com/u/128187875?v=4",
     html_url: "https://github.com/mockUsername",
   },
-  language: "TypeScript",
+  language: "",
   description: "",
   pushed_at: "2021-03-15T03:06:12Z",
 };
