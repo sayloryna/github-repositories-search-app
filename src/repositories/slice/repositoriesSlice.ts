@@ -4,8 +4,9 @@ import { RepositoriesState } from "./types";
 
 const initialState: RepositoriesState = {
   repositories: [],
-  repositoryNameFilter: "",
   languagesUsed: [],
+  repositoryNameFilter: "",
+  repositoryLanguageFilter: "",
 };
 
 export const repositoriesSlice = createSlice({
@@ -22,11 +23,19 @@ export const repositoriesSlice = createSlice({
         ),
       };
     },
-
     loadRepositoryNameFilter: (currentState, action: PayloadAction<string>) => {
       return {
         ...currentState,
         repositoryNameFilter: action.payload,
+      };
+    },
+    loadRepositoryLanguageFilter: (
+      currentState,
+      action: PayloadAction<string>,
+    ) => {
+      return {
+        ...currentState,
+        repositoryLanguageFilter: action.payload,
       };
     },
   },
@@ -35,6 +44,7 @@ export const repositoriesSlice = createSlice({
 export const {
   loadRepositories: loadRepositoriesActionCreator,
   loadRepositoryNameFilter: loadRepositoryNameFilterActionCreator,
+  loadRepositoryLanguageFilter: loadRepositoryLanguageFilterActionCreator,
 } = repositoriesSlice.actions;
 
 export const repositoriesReducer = repositoriesSlice.reducer;
