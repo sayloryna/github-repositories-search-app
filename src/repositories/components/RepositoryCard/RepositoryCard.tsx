@@ -10,7 +10,7 @@ type RepositoryProps = {
 const RepositoryCard = ({
   repository,
 }: RepositoryProps): React.ReactElement => {
-  const updatedDate = format(repository.pushed_at, "MMM d");
+  const updatedDate = format(new Date(repository.pushed_at), "MMM d");
 
   const hasNotProgramingLanguage = repository.language === null;
   const getBadge = (language: string) => {

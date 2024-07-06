@@ -1,31 +1,31 @@
 import { describe, test, expect } from "vitest";
-import { RepositoriesState } from "../types";
 import { testRepository1 } from "../../../mocks/mockRepositories";
 import {
-  loadRepositoriesActionCreator,
+  loadRepositoryLanguageFilterActionCreator,
   repositoriesReducer,
 } from "../repositoriesSlice";
+import { RepositoriesState } from "../types";
 
 describe("Given a repositoriesSlice", () => {
-  describe("When it  receives a current state and a loadRepositories action with a list of repositories with testRepository1", () => {
-    test("Then it should return a new state with the list of repositories with testRepository1", () => {
-      const newRepositories = [testRepository1];
+  describe("When it  receives a current state and a loadRepositoryLanguageFilter action  with 'JavasScript'", () => {
+    test("Then it should return a new state with repositoryLanguageFilter: 'JavasScript'", () => {
+      const filter = "JavaScript";
 
       const currentState: RepositoriesState = {
-        repositories: [],
+        repositories: [testRepository1],
+        languagesUsed: [testRepository1.language],
         repositoryNameFilter: "",
-        languagesUsed: [],
         repositoryLanguageFilter: "",
       };
 
       const expectedNewState: RepositoriesState = {
         repositories: [testRepository1],
-        repositoryNameFilter: "",
         languagesUsed: [testRepository1.language],
-        repositoryLanguageFilter: "",
+        repositoryNameFilter: "",
+        repositoryLanguageFilter: filter,
       };
 
-      const action = loadRepositoriesActionCreator(newRepositories);
+      const action = loadRepositoryLanguageFilterActionCreator(filter);
 
       const newState = repositoriesReducer(currentState, action);
 

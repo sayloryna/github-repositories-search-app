@@ -4,24 +4,45 @@ import { RepositoriesState } from "./types";
 
 const initialState: RepositoriesState = {
   repositories: [],
-  repositoriNameFilter: "",
+  languagesUsed: [],
+  repositoryNameFilter: "",
+  repositoryLanguageFilter: "",
 };
 
-export const RepositoriesSlice = createSlice({
+export const repositoriesSlice = createSlice({
   name: "repositories",
   initialState,
   reducers: {
     loadRepositories: (currentState, action: PayloadAction<Repository[]>) => {
+      const repositories = action.payload;
       return {
         ...currentState,
-        repositories: action.payload,
+        repositories,
+        languagesUsed: Array.from(
+          new Set(
+            repositories.map((repository) => {
+              if (repository.language === null) {
+                return "";
+              }
+              return repository.language;
+            }),
+          ),
+        ),
       };
     },
-
     loadRepositoryNameFilter: (currentState, action: PayloadAction<string>) => {
       return {
         ...currentState,
-        repositoriNameFilter: action.payload,
+        repositoryNameFilter: action.payload,
+      };
+    },
+    loadRepositoryLanguageFilter: (
+      currentState,
+      action: PayloadAction<string>,
+    ) => {
+      return {
+        ...currentState,
+        repositoryLanguageFilter: action.payload,
       };
     },
   },
@@ -30,6 +51,7 @@ export const RepositoriesSlice = createSlice({
 export const {
   loadRepositories: loadRepositoriesActionCreator,
   loadRepositoryNameFilter: loadRepositoryNameFilterActionCreator,
-} = RepositoriesSlice.actions;
+  loadRepositoryLanguageFilter: loadRepositoryLanguageFilterActionCreator,
+} = repositoriesSlice.actions;
 
-export const repositoriesReducer = RepositoriesSlice.reducer;
+export const repositoriesReducer = repositoriesSlice.reducer;

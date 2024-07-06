@@ -8,7 +8,13 @@ import {
 
 const initialState: RepositoriesState = {
   repositories: [testRepository1, testRepository2, testRepository3],
-  repositoriNameFilter: "",
+  languagesUsed: [
+    testRepository1.language,
+    testRepository2.language,
+    testRepository3.language,
+  ],
+  repositoryNameFilter: "",
+  repositoryLanguageFilter: "",
 };
 
 export const MockRepositoriesSlice = createSlice({
