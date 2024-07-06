@@ -1,15 +1,17 @@
 import { useAppSelector } from "../../../store/hooks";
 import { Repository } from "../../types";
 import RepositoryCard from "../RepositoryCard/RepositoryCard";
+import RepositoryLanguageFilterForm from "../RepositoryLanguageFilterForm/RepositoryLanguageFilterForm";
 import RepositoryNameFilterForm from "../RepositoryNameFilterForm/RepositoryNameFilterForm";
 import "./RepositoriesList.scss";
 
 const RepositoriesList = (): React.ReactElement => {
-  const { repositories, repositoryNameFilter: repositoriNameFilter } =
-    useAppSelector((state) => state.repositoriesReducer);
+  const { repositories, repositoryNameFilter } = useAppSelector(
+    (state) => state.repositoriesReducer,
+  );
 
   const filteredRepositories = repositories.filter((repository: Repository) =>
-    repository.name.toLowerCase().includes(repositoriNameFilter.toLowerCase()),
+    repository.name.toLowerCase().includes(repositoryNameFilter.toLowerCase()),
   );
 
   if (repositories.length === 0) {
@@ -24,7 +26,10 @@ const RepositoriesList = (): React.ReactElement => {
 
   return (
     <>
-      <RepositoryNameFilterForm />
+      <div className="repositories__filters">
+        <RepositoryNameFilterForm />
+        <RepositoryLanguageFilterForm />
+      </div>
       <ul className="repositories">
         {filteredRepositories.map((repository: Repository) => (
           <li key={repository.id}>
