@@ -5,7 +5,7 @@ import RepositoryNameFilterForm from "../RepositoryNameFilterForm/RepositoryName
 import "./RepositoriesList.scss";
 
 const RepositoriesList = (): React.ReactElement => {
-  const { repositories, repositoriesNameFilter: repositoriNameFilter } =
+  const { repositories, repositoryNameFilter: repositoriNameFilter } =
     useAppSelector((state) => state.repositoriesReducer);
 
   const filteredRepositories = repositories.filter((repository: Repository) =>

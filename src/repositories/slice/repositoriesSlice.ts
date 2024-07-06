@@ -4,7 +4,7 @@ import { RepositoriesState } from "./types";
 
 const initialState: RepositoriesState = {
   repositories: [],
-  repositoriesNameFilter: "",
+  repositoryNameFilter: "",
   languagesUsed: [],
 };
 
@@ -26,7 +26,7 @@ export const repositoriesSlice = createSlice({
     loadRepositoryNameFilter: (currentState, action: PayloadAction<string>) => {
       return {
         ...currentState,
-        repositoriNameFilter: action.payload,
+        repositoryNameFilter: action.payload,
       };
     },
   },

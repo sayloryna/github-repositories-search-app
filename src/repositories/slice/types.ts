@@ -2,6 +2,6 @@ import { Repository } from "../types";
 
 export interface RepositoriesState {
   repositories: Repository[];
-  repositoriesNameFilter: string;
+  repositoryNameFilter: string;
   languagesUsed: string[];
 }
