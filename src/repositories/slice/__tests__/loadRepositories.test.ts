@@ -13,12 +13,14 @@ describe("Given a repositoriesSlice", () => {
 
       const currentState: RepositoriesState = {
         repositories: [],
-        repositoriNameFilter: "",
+        repositoriesNameFilter: "",
+        languagesUsed: [],
       };
 
       const expectedNewState: RepositoriesState = {
         repositories: [testRepository1],
-        repositoriNameFilter: "",
+        repositoriesNameFilter: "",
+        languagesUsed: [testRepository1.language],
       };
 
       const action = loadRepositoriesActionCreator(newRepositories);

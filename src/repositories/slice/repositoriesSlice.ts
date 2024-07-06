@@ -4,17 +4,22 @@ import { RepositoriesState } from "./types";
 
 const initialState: RepositoriesState = {
   repositories: [],
-  repositoriNameFilter: "",
+  repositoriesNameFilter: "",
+  languagesUsed: [],
 };
 
-export const RepositoriesSlice = createSlice({
+export const repositoriesSlice = createSlice({
   name: "repositories",
   initialState,
   reducers: {
     loadRepositories: (currentState, action: PayloadAction<Repository[]>) => {
+      const repositories = action.payload;
       return {
         ...currentState,
-        repositories: action.payload,
+        repositories,
+        languagesUsed: Array.from(
+          new Set(repositories.map((repository) => repository.language)),
+        ),
       };
     },
 
@@ -30,6 +35,6 @@ export const RepositoriesSlice = createSlice({
 export const {
   loadRepositories: loadRepositoriesActionCreator,
   loadRepositoryNameFilter: loadRepositoryNameFilterActionCreator,
-} = RepositoriesSlice.actions;
+} = repositoriesSlice.actions;
 
-export const repositoriesReducer = RepositoriesSlice.reducer;
+export const repositoriesReducer = repositoriesSlice.reducer;
