@@ -15,12 +15,14 @@ describe("Given a repositoriesSlice", () => {
         repositories: [],
         repositoryNameFilter: "",
         languagesUsed: [],
+        repositoryLanguageFilter: "",
       };
 
       const expectedNewState: RepositoriesState = {
         repositories: [testRepository1],
         repositoryNameFilter: "",
         languagesUsed: [testRepository1.language],
+        repositoryLanguageFilter: "",
       };
 
       const action = loadRepositoriesActionCreator(newRepositories);

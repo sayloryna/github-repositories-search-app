@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import { useAppSelector } from "../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+
 import "./RepositoryLanguageFilterForm.scss";
+import { loadRepositoryLanguageFilterActionCreator } from "../../slice/repositoriesSlice";
 
 const RepositoryLanguageFilterForm = (): React.ReactElement => {
   const { languagesUsed } = useAppSelector(
     (state) => state.repositoriesReducer,
   );
-  const initialFilter = "";
+  const dispatch = useAppDispatch();
 
+  const initialFilter = "";
   const [filter, setFilter] = useState(initialFilter);
 
-  let key = 0;
   return (
     <form
       className="selector-form"
-      onChange={(event) => {
+      onSubmit={(event) => {
         event.preventDefault();
       }}
     >
@@ -23,31 +25,31 @@ const RepositoryLanguageFilterForm = (): React.ReactElement => {
         name="language"
         id="language"
         aria-label="Select a Language to filter"
+        value={filter}
         onChange={(event) => {
           setFilter(event.target.value);
+          const action = loadRepositoryLanguageFilterActionCreator(
+            event.target.value,
+          );
+          dispatch(action);
         }}
-        value={filter}
       >
         <option defaultChecked value={""}>
           Language
         </option>
-        {languagesUsed.toSorted().map((language) => {
+        {languagesUsed.map((language) => {
           if (!language) {
-            key++;
-            return (
-              <option key={key} value={""}>
-                All
-              </option>
-            );
+            return <option value={""}>All</option>;
           }
-          key++;
+
           return (
-            <option key={key} value={language}>
+            <option id="language" value={language}>
               {language}
             </option>
           );
         })}
       </select>
+      <button type="submit" hidden></button>
     </form>
   );
 };

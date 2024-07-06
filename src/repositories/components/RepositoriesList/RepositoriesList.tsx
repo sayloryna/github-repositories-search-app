@@ -6,12 +6,17 @@ import RepositoryNameFilterForm from "../RepositoryNameFilterForm/RepositoryName
 import "./RepositoriesList.scss";
 
 const RepositoriesList = (): React.ReactElement => {
-  const { repositories, repositoryNameFilter } = useAppSelector(
-    (state) => state.repositoriesReducer,
-  );
+  const { repositories, repositoryNameFilter, repositoryLanguageFilter } =
+    useAppSelector((state) => state.repositoriesReducer);
 
-  const filteredRepositories = repositories.filter((repository: Repository) =>
-    repository.name.toLowerCase().includes(repositoryNameFilter.toLowerCase()),
+  const filteredRepositories = repositories.filter(
+    (repository: Repository) =>
+      repository.name
+        .toLowerCase()
+        .includes(repositoryNameFilter.toLowerCase()) &&
+      (repository.language ? repository.language.toLowerCase() : "").includes(
+        repositoryLanguageFilter.toLowerCase(),
+      ),
   );
 
   if (repositories.length === 0) {

@@ -19,7 +19,14 @@ export const repositoriesSlice = createSlice({
         ...currentState,
         repositories,
         languagesUsed: Array.from(
-          new Set(repositories.map((repository) => repository.language)),
+          new Set(
+            repositories.map((repository) => {
+              if (repository.language === null) {
+                return "";
+              }
+              return repository.language;
+            }),
+          ),
         ),
       };
     },
