@@ -1,4 +1,6 @@
+import userEvent from "@testing-library/user-event";
 import { ToastContainer } from "react-toastify";
+import { MemoryRouter, RouterProvider } from "react-router-dom";
 import { http, HttpResponse } from "msw";
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
@@ -6,11 +8,9 @@ import { Provider } from "react-redux";
 import SearchRepositoriesForm from "./SearchRepositoriesForm";
 import { store } from "../../../store/store";
 import App from "../../../components/App/App";
-import userEvent from "@testing-library/user-event";
 import { server } from "../../../mocks/node";
 import { Repository } from "../../types";
 import { mockStore } from "../../../mocks/mockStore";
-import { MemoryRouter, RouterProvider } from "react-router-dom";
 import mainRouter from "../../../Router/mainRouter";
 
 const user = userEvent.setup();
