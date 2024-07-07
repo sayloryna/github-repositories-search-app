@@ -1,8 +1,9 @@
 import React from "react";
 import { Bounce, ToastContainer } from "react-toastify";
+import { Outlet } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import SearchRepositoriesForm from "../../repositories/components/SearchRepositoriesForm/SearchRepositoriesForm";
 import RepositoriesList from "../../repositories/components/RepositoriesList/RepositoriesList";
-import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
 
 const App = (): React.ReactElement => {
@@ -10,6 +11,7 @@ const App = (): React.ReactElement => {
     <div className="app">
       <h1 className="main-title">Github Repositories</h1>
       <SearchRepositoriesForm />
+      <Outlet />
       <RepositoriesList />
       <ToastContainer
         position="top-center"
