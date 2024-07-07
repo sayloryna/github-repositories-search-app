@@ -1,6 +1,7 @@
 import React from "react";
 import { format } from "date-fns";
 import { Repository } from "../../types";
+import getBadge from "./utilities/getBadge";
 import "./RepositoryCard.scss";
 
 type RepositoryProps = {
@@ -13,20 +14,6 @@ const RepositoryCard = ({
   const updatedDate = format(new Date(repository.pushed_at), "MMM d");
 
   const hasNotProgramingLanguage = repository.language === null;
-  const getBadge = (language: string) => {
-    if (!language) {
-      return "";
-    }
-
-    if (language === "HTML") {
-      return "https://img.shields.io/badge/-HTML-ffffff?style=flat-square&logo=HTML5&logoColor=black";
-    }
-
-    if (language === "CSS") {
-      return "https://img.shields.io/badge/-CSS-ffffff?style=flat-square&logo=CSS3&logoColor=black";
-    }
-    return `https://img.shields.io/badge/-${language}-ffffff?style=flat-square&logo=${language}&logoColor=black`;
-  };
 
   return (
     <article className="repository">
@@ -38,7 +25,7 @@ const RepositoryCard = ({
           height="100"
           width="100"
         />
-        <a href={repository.html_url}>
+        <a href={repository.html_url} target="blank" title="See on github">
           <h2 className="repository__name">{repository.name}</h2>
         </a>
       </div>

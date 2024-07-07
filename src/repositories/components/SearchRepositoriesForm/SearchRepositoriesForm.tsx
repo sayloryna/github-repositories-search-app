@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import RepositoriesClient from "../../client/RepositoriesClient";
 import { notifyError } from "../../../notify/notifyError";
-import SearchIcon from "../SearchIcon/SearchIcon";
+import SearchIcon from "../../../components/SearchIcon/SearchIcon";
 import { useAppDispatch } from "../../../store/hooks";
 import { loadRepositoriesActionCreator } from "../../slice/repositoriesSlice";
 import { Repository } from "../../types";
