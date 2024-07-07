@@ -19,16 +19,6 @@ const RepositoriesList = (): React.ReactElement => {
       ),
   );
 
-  if (repositories.length === 0) {
-    return (
-      <img
-        className="empty-list-image"
-        src="assets/search-holder.webp"
-        alt="Github mascot looking through binoculars at the building  in a supernatural landscape"
-      />
-    );
-  }
-
   return (
     <>
       <div className="repositories__filters">
