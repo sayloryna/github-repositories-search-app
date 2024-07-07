@@ -1,11 +1,11 @@
+import { Suspense } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
 import App from "../components/App/App";
-import { RepositoriesPage, HomePage, NotFoundPage } from "./lazyImports";
-import { Suspense } from "react";
+import { RepositoriesPage, NotFoundPage, HomePage } from "./lazyImports";
 import Loading from "../components/Loading/Loading";
 
 const mainRouter = createBrowserRouter(

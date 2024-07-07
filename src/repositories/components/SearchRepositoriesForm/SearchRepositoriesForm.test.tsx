@@ -1,17 +1,16 @@
-import userEvent from "@testing-library/user-event";
-import { ToastContainer } from "react-toastify";
-import { MemoryRouter, RouterProvider } from "react-router-dom";
 import { http, HttpResponse } from "msw";
-import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { MemoryRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
+import { describe, expect, it } from "vitest";
+import userEvent from "@testing-library/user-event";
+import { render, screen } from "@testing-library/react";
+import { ToastContainer } from "react-toastify";
 import SearchRepositoriesForm from "./SearchRepositoriesForm";
-import { store } from "../../../store/store";
-import App from "../../../components/App/App";
-import { server } from "../../../mocks/node";
-import { Repository } from "../../types";
 import { mockStore } from "../../../mocks/mockStore";
+import { store } from "../../../store/store";
+import { server } from "../../../mocks/node";
 import mainRouter from "../../../Router/mainRouter";
+import { Repository } from "../../types";
 
 const user = userEvent.setup();
 
@@ -31,21 +30,8 @@ const typeAndSubmit = async (text: string): Promise<void> => {
 describe("Given a SearchRepositoriesForm component", () => {
   describe("When rendered", () => {
     it("Then it should show an 'username' form control ", () => {
-      render(
-        <Provider store={store}>
-          <MemoryRouter>
-            <App />
-          </MemoryRouter>
-        </Provider>,
-      );
       const expectedText = /username/i;
 
-      const input = screen.getByLabelText(expectedText);
-
-      expect(input).toBeVisible();
-    });
-
-    it("Then it should show an 'Search user repositories' button ", () => {
       render(
         <Provider store={store}>
           <MemoryRouter>
@@ -53,7 +39,22 @@ describe("Given a SearchRepositoriesForm component", () => {
           </MemoryRouter>
         </Provider>,
       );
+
+      const input = screen.getByLabelText(expectedText);
+
+      expect(input).toBeVisible();
+    });
+
+    it("Then it should show an 'Search user repositories' button ", () => {
       const expectedName = /search user repositories/i;
+
+      render(
+        <Provider store={store}>
+          <MemoryRouter>
+            <SearchRepositoriesForm />
+          </MemoryRouter>
+        </Provider>,
+      );
 
       const button = screen.getByRole("button", {
         name: expectedName,
@@ -77,7 +78,7 @@ describe("Given a SearchRepositoriesForm component", () => {
       render(
         <Provider store={store}>
           <MemoryRouter>
-            <App />
+            <SearchRepositoriesForm />
             <ToastContainer />
           </MemoryRouter>
         </Provider>,

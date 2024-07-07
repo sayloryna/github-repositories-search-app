@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import RepositoryLanguageFilterForm from "./RepositoryLanguageFilterForm";
-import userEvent from "@testing-library/user-event";
 import { describe, it, expect, beforeEach } from "vitest";
 import { mockStore } from "../../../mocks/mockStore";
 
@@ -14,6 +14,7 @@ beforeEach(() => {
     </Provider>,
   );
 });
+
 describe("Given a RepositoryLanguageFilterForm component", () => {
   describe("When rendered", () => {
     it("Should show the input control Select a Language to filter", () => {
