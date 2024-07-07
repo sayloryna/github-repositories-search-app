@@ -2,18 +2,21 @@ import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { mockStore } from "../../../mocks/mockStore";
+import { MemoryRouter } from "react-router-dom";
 import RepositoryNameFilterForm from "./RepositoryNameFilterForm";
-import App from "../../../components/App/App";
 
-describe("Given a SearchRepositoriesForm component", () => {
+describe("Given a RepositoryNameFilterForm component", () => {
   describe("When rendered", () => {
     it("Then it should show an 'repository name' form control ", () => {
+      const expectedText = /repository name/i;
+
       render(
         <Provider store={mockStore}>
-          <App />
+          <MemoryRouter>
+            <RepositoryNameFilterForm />
+          </MemoryRouter>
         </Provider>,
       );
-      const expectedText = /repository name/i;
 
       const input = screen.getByLabelText(expectedText);
 
@@ -21,12 +24,15 @@ describe("Given a SearchRepositoriesForm component", () => {
     });
 
     it("Then it should show an 'Find repository' button ", () => {
+      const expectedName = /find repository/i;
+
       render(
         <Provider store={mockStore}>
-          <RepositoryNameFilterForm />
+          <MemoryRouter>
+            <RepositoryNameFilterForm />
+          </MemoryRouter>
         </Provider>,
       );
-      const expectedName = /find repository/i;
 
       const button = screen.getByRole("button", {
         name: expectedName,

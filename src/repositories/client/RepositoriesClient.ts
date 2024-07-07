@@ -2,7 +2,7 @@ import axios from "axios";
 import { RepositoriesClientStructure } from "./types";
 import { Repository } from "../types";
 
-class RepositoriesClient implements RepositoriesClientStructure {
+export class RepositoriesClient implements RepositoriesClientStructure {
   async getAllRepos(username: string): Promise<Repository[]> {
     try {
       const response = await axios.get(
@@ -18,4 +18,4 @@ class RepositoriesClient implements RepositoriesClientStructure {
   }
 }
 
-export default RepositoriesClient;
+export const client = new RepositoriesClient();

@@ -1,15 +1,22 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import RepositoriesList from "./RepositoriesList";
 import { mockStore } from "../../../mocks/mockStore";
+import RepositoriesList from "./RepositoriesList";
+import {
+  testRepository1,
+  testRepository2,
+  testRepository3,
+} from "../../../mocks/mockRepositories";
 
 describe("Given a RepositoryCard component", () => {
   describe("When rendered", () => {
     beforeEach(() => {
       render(
         <Provider store={mockStore}>
-          <RepositoriesList />
+          <RepositoriesList
+            repositories={[testRepository1, testRepository2, testRepository3]}
+          />
         </Provider>,
       );
     });

@@ -1,15 +1,16 @@
-import { ToastContainer } from "react-toastify";
 import { http, HttpResponse } from "msw";
-import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { MemoryRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import SearchRepositoriesForm from "./SearchRepositoriesForm";
-import { store } from "../../../store/store";
-import App from "../../../components/App/App";
+import { describe, expect, it } from "vitest";
 import userEvent from "@testing-library/user-event";
-import { server } from "../../../mocks/node";
-import { Repository } from "../../types";
+import { render, screen } from "@testing-library/react";
+import { ToastContainer } from "react-toastify";
+import SearchRepositoriesForm from "./SearchRepositoriesForm";
 import { mockStore } from "../../../mocks/mockStore";
+import { store } from "../../../store/store";
+import { server } from "../../../mocks/node";
+import mainRouter from "../../../Router/mainRouter";
+import { Repository } from "../../types";
 
 const user = userEvent.setup();
 
@@ -29,12 +30,15 @@ const typeAndSubmit = async (text: string): Promise<void> => {
 describe("Given a SearchRepositoriesForm component", () => {
   describe("When rendered", () => {
     it("Then it should show an 'username' form control ", () => {
+      const expectedText = /username/i;
+
       render(
         <Provider store={store}>
-          <App />
+          <MemoryRouter>
+            <SearchRepositoriesForm />
+          </MemoryRouter>
         </Provider>,
       );
-      const expectedText = /username/i;
 
       const input = screen.getByLabelText(expectedText);
 
@@ -42,12 +46,15 @@ describe("Given a SearchRepositoriesForm component", () => {
     });
 
     it("Then it should show an 'Search user repositories' button ", () => {
+      const expectedName = /search user repositories/i;
+
       render(
         <Provider store={store}>
-          <SearchRepositoriesForm />
+          <MemoryRouter>
+            <SearchRepositoriesForm />
+          </MemoryRouter>
         </Provider>,
       );
-      const expectedName = /search user repositories/i;
 
       const button = screen.getByRole("button", {
         name: expectedName,
@@ -70,8 +77,10 @@ describe("Given a SearchRepositoriesForm component", () => {
 
       render(
         <Provider store={store}>
-          <App />
-          <ToastContainer />
+          <MemoryRouter>
+            <SearchRepositoriesForm />
+            <ToastContainer />
+          </MemoryRouter>
         </Provider>,
       );
 
@@ -89,8 +98,7 @@ describe("Given a SearchRepositoriesForm component", () => {
 
       render(
         <Provider store={mockStore}>
-          <App />
-          <ToastContainer />
+          <RouterProvider router={mainRouter} />
         </Provider>,
       );
 
