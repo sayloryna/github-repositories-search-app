@@ -1,12 +1,10 @@
-.filter-form {
-  align-self: flex-end;
-  background-color: #e0e0e040;
-  padding-left: 5px;
-  width: 100%;
-}
-
 .form__searchbox--small {
+  background-color: #e0e0e040;
   padding: 5px;
   border: none;
-  border-radius: 0;
+  border-radius: 10px;
+}
+.repository-name {
+  width: 100%;
+  padding-left: 5px;
 }

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useAppDispatch } from "../../../store/hooks";
 import { loadRepositoryNameFilterActionCreator } from "../../slice/repositoriesSlice";
+import SearchBar from "../../../components/SearchBar/SearchBar";
 import "./RepositoryNameFilter.scss";
-import SearchIcon from "../SearchIcon/SearchIcon";
 
 const RepositoryNameFilterForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -10,38 +10,23 @@ const RepositoryNameFilterForm = (): React.ReactElement => {
   const initialFilterState = "";
   const [filter, setFilter] = useState(initialFilterState);
 
+  const loadRepositories = () => {
+    const loadFilter = loadRepositoryNameFilterActionCreator(filter);
+
+    dispatch(loadFilter);
+  };
   return (
-    <form
-      className="filter-form"
-      onSubmit={(event) => {
-        event.preventDefault();
-
-        const loadFilter = loadRepositoryNameFilterActionCreator(filter);
-
-        dispatch(loadFilter);
-      }}
-    >
-      <div className="form__searchbox form__searchbox--small">
-        <input
-          aria-label="repository name"
-          className="repository-name"
-          type="text"
-          id="name"
-          placeholder="Find a repository..."
-          value={filter}
-          onChange={(event) => {
-            setFilter(event.target.value);
-          }}
-        />
-        <button
-          className="submitButton"
-          type="submit"
-          aria-label="Find repository"
-        >
-          <SearchIcon color="grey" name="Find repository" />
-        </button>
-      </div>
-    </form>
+    <>
+      <SearchBar
+        className=" form__searchbox--small"
+        buttonLabel="Find Repository"
+        inputClassName="repository-name"
+        placeholder="Find Repository..."
+        submitAction={loadRepositories}
+        setState={setFilter}
+        state={filter}
+      />
+    </>
   );
 };
 
