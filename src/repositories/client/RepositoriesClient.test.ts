@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import RepositoriesClient from "./RepositoriesClient";
+import { RepositoriesClient } from "./RepositoriesClient";
 import { testRepository1 } from "../../mocks/mockRepositories";
 import { Repository } from "../types";
 import { server } from "../../mocks/node";

@@ -10,6 +10,8 @@ import userEvent from "@testing-library/user-event";
 import { server } from "../../../mocks/node";
 import { Repository } from "../../types";
 import { mockStore } from "../../../mocks/mockStore";
+import { MemoryRouter, RouterProvider } from "react-router-dom";
+import mainRouter from "../../../Router/mainRouter";
 
 const user = userEvent.setup();
 
@@ -31,7 +33,9 @@ describe("Given a SearchRepositoriesForm component", () => {
     it("Then it should show an 'username' form control ", () => {
       render(
         <Provider store={store}>
-          <App />
+          <MemoryRouter>
+            <App />
+          </MemoryRouter>
         </Provider>,
       );
       const expectedText = /username/i;
@@ -44,7 +48,9 @@ describe("Given a SearchRepositoriesForm component", () => {
     it("Then it should show an 'Search user repositories' button ", () => {
       render(
         <Provider store={store}>
-          <SearchRepositoriesForm />
+          <MemoryRouter>
+            <SearchRepositoriesForm />
+          </MemoryRouter>
         </Provider>,
       );
       const expectedName = /search user repositories/i;
@@ -70,8 +76,10 @@ describe("Given a SearchRepositoriesForm component", () => {
 
       render(
         <Provider store={store}>
-          <App />
-          <ToastContainer />
+          <MemoryRouter>
+            <App />
+            <ToastContainer />
+          </MemoryRouter>
         </Provider>,
       );
 
@@ -89,8 +97,7 @@ describe("Given a SearchRepositoriesForm component", () => {
 
       render(
         <Provider store={mockStore}>
-          <App />
-          <ToastContainer />
+          <RouterProvider router={mainRouter} />
         </Provider>,
       );
 
