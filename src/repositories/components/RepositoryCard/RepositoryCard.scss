@@ -27,7 +27,8 @@
 
   &__language {
     width: auto;
-    max-width: 200px;
+    min-width: 180px;
+
     height: 1.9rem;
 
     &-badge {
