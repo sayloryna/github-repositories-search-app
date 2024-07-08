@@ -18,6 +18,7 @@ const RepositoryNameFilterForm = (): React.ReactElement => {
   return (
     <>
       <SearchBar
+        maxLength={100}
         className=" form__searchbox--small"
         buttonLabel="Find Repository"
         inputClassName="repository-name"

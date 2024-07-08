@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { describe, expect, it } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
-import { ToastContainer } from "react-toastify";
 import SearchRepositoriesForm from "./SearchRepositoriesForm";
 import { mockStore } from "../../../mocks/mockStore";
 import { store } from "../../../store/store";
@@ -65,9 +64,8 @@ describe("Given a SearchRepositoriesForm component", () => {
   });
 
   describe("And the user submits with 'mockUsername' ", () => {
-    it("it should show the text 'Unable to get repositories from user: '", async () => {
-      const expectedText =
-        /unable to get repositories from user: mockusername/i;
+    it("it should show the text 'Couldn't find a user with that name'", async () => {
+      const expectedText = /couldn't find a user with that name/i;
 
       server.use(
         http.get("https://api.github.com/users/mockUsername/repos", () => {
@@ -77,10 +75,7 @@ describe("Given a SearchRepositoriesForm component", () => {
 
       render(
         <Provider store={store}>
-          <MemoryRouter>
-            <SearchRepositoriesForm />
-            <ToastContainer />
-          </MemoryRouter>
+          <RouterProvider router={mainRouter} />
         </Provider>,
       );
 

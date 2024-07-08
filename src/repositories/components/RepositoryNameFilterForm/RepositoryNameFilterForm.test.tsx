@@ -7,8 +7,8 @@ import RepositoryNameFilterForm from "./RepositoryNameFilterForm";
 
 describe("Given a RepositoryNameFilterForm component", () => {
   describe("When rendered", () => {
-    it("Then it should show an 'repository name' form control ", () => {
-      const expectedText = /repository name/i;
+    it("Then it should show an 'Find Repository..' form control ", () => {
+      const expectedText = /find Repository../i;
 
       render(
         <Provider store={mockStore}>

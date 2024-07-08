@@ -15,23 +15,23 @@
     width: 100%;
     justify-content: space-between;
 
-    &:focus-within {
-      outline: 2px solid blue;
+    &__input {
+      width: 100%;
+      padding-left: 5px;
     }
 
-    &__input {
-      padding-left: 5px;
+    &:focus-within {
+      outline: 2px solid blue;
     }
   }
 }
 
-.username {
-  padding-left: 5px;
-}
-
-.submitButton {
+.submit-button {
   display: flex;
-  border-left: 1px solid #aaa;
   align-items: center;
   justify-content: center;
+
+  &:focus {
+    outline: 2px solid blue;
+  }
 }
