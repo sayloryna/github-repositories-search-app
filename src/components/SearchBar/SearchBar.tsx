@@ -1,13 +1,14 @@
 import React from "react";
 import SearchIcon from "../SearchIcon/SearchIcon";
+import "./SearchBar.scss";
 
 type SearchBarProps = {
   submitAction: () => void;
-
   placeholder: string;
   className: string;
-  inputClassName: string;
+  inputClassName?: string;
   buttonLabel: string;
+  maxLength: number;
   state: string;
   setState: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -16,8 +17,9 @@ const SearchBar = ({
   submitAction,
   placeholder,
   className = "",
-  inputClassName,
+  inputClassName = "",
   buttonLabel,
+  maxLength = 200,
   state,
   setState,
 }: SearchBarProps): React.ReactElement => {
@@ -31,8 +33,9 @@ const SearchBar = ({
       }}
     >
       <input
-        aria-label={inputClassName.split("-").join(" ")}
-        className={inputClassName}
+        maxLength={maxLength}
+        aria-label={placeholder}
+        className={"form__searchbox__input" + " " + inputClassName}
         type="text"
         placeholder={placeholder}
         value={state}
