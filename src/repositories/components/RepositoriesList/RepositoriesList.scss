@@ -14,6 +14,10 @@
       align-items: flex-end;
     }
   }
+
+  &__total {
+    align-self: flex-start;
+  }
 }
 
 .empty-list-image {

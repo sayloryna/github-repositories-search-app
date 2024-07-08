@@ -17,6 +17,7 @@ const RepositoriesList = ({
         <RepositoryNameFilterForm />
         <RepositoryLanguageFilterForm />
       </div>
+      <span className="repositories__total">{`Total Results: ${repositories.length}`}</span>
       <ul className="repositories">
         {repositories.map((repository: Repository) => (
           <li key={repository.id}>

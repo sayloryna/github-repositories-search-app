@@ -7,6 +7,7 @@ import {
 import App from "../components/App/App";
 import { RepositoriesPage, NotFoundPage, HomePage } from "./lazyImports";
 import Loading from "../components/Loading/Loading";
+import UserNotFoundPage from "../pages/UserNotFoundPage/UserNotFoundPage";
 
 const mainRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,14 @@ const mainRouter = createBrowserRouter(
         element={
           <Suspense fallback={<Loading />}>
             <RepositoriesPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/nouser"
+        element={
+          <Suspense fallback={<Loading />}>
+            <UserNotFoundPage />
           </Suspense>
         }
       />
