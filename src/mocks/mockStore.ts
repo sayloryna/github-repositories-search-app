@@ -26,5 +26,5 @@ export const MockRepositoriesSlice = createSlice({
 const repositoriesReducer = MockRepositoriesSlice.reducer;
 
 export const mockStore = configureStore({
-  reducer: { repositoriesReducer },
+  reducer: { repositories: repositoriesReducer },
 });

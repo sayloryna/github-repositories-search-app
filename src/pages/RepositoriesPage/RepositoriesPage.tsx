@@ -9,7 +9,7 @@ import { client } from "../../repositories/client/RepositoriesClient";
 const RepositoriesPage = (): React.ReactElement => {
   const { username } = useParams();
   const { repositoryNameFilter, repositoryLanguageFilter } = useAppSelector(
-    (state) => state.repositoriesReducer,
+    (state) => state.repositories,
   );
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

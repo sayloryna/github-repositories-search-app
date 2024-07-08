@@ -5,9 +5,7 @@ import "./RepositoryLanguageFilterForm.scss";
 import { loadRepositoryLanguageFilterActionCreator } from "../../slice/repositoriesSlice";
 
 const RepositoryLanguageFilterForm = (): React.ReactElement => {
-  const { languagesUsed } = useAppSelector(
-    (state) => state.repositoriesReducer,
-  );
+  const { languagesUsed } = useAppSelector((state) => state.repositories);
   const dispatch = useAppDispatch();
 
   const initialFilter = "";
