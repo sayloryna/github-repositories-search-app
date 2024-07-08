@@ -5,6 +5,7 @@ import {
   testRepository2,
   testRepository3,
 } from "./mockRepositories";
+import { uiReducer } from "../ui/uiSlice/uiSlice";
 
 const initialState: RepositoriesState = {
   repositories: [testRepository1, testRepository2, testRepository3],
@@ -26,5 +27,5 @@ export const MockRepositoriesSlice = createSlice({
 const repositoriesReducer = MockRepositoriesSlice.reducer;
 
 export const mockStore = configureStore({
-  reducer: { repositoriesReducer },
+  reducer: { repositories: repositoriesReducer, ui: uiReducer },
 });

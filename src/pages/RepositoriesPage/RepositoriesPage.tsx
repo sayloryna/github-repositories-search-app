@@ -5,11 +5,14 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import RepositoriesList from "../../repositories/components/RepositoriesList/RepositoriesList";
 import { loadRepositoriesActionCreator } from "../../repositories/slice/repositoriesSlice";
 import { client } from "../../repositories/client/RepositoriesClient";
+import { hideLoading, showLoading } from "../../ui/uiSlice/actions";
+import Loading from "../../components/Loading/Loading";
 
 const RepositoriesPage = (): React.ReactElement => {
   const { username } = useParams();
+  const { isLoading } = useAppSelector((state) => state.ui);
   const { repositoryNameFilter, repositoryLanguageFilter } = useAppSelector(
-    (state) => state.repositoriesReducer,
+    (state) => state.repositories,
   );
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -20,12 +23,16 @@ const RepositoriesPage = (): React.ReactElement => {
   useEffect(() => {
     (async () => {
       try {
+        dispatch(showLoading);
+
         const newRepositories = await client.getAllRepos(username!);
 
         setRepositories(newRepositories);
 
         const loadRepositories = loadRepositoriesActionCreator(newRepositories);
+
         dispatch(loadRepositories);
+        dispatch(hideLoading);
       } catch {
         navigate("/nouser");
       }
@@ -41,7 +48,9 @@ const RepositoriesPage = (): React.ReactElement => {
         repositoryLanguageFilter.toLowerCase(),
       ),
   );
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return <RepositoriesList repositories={filteredRepositories} />;
 };
 
