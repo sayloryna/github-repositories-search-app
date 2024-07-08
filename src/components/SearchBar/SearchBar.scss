@@ -1,17 +1,17 @@
+@use "../../styles/variables";
+
 .form {
   display: flex;
-  gap: 5px;
   width: 100%;
   justify-content: center;
   align-items: center;
 
   &__searchbox {
     display: flex;
-    gap: 5px;
     align-items: center;
-    border: 1px solid #aaa;
+    border: variables.$border-main;
     padding: 8px 5px;
-    border-radius: 10px;
+    border-radius: variables.$border-main-radius;
     width: 100%;
     justify-content: space-between;
 
@@ -21,7 +21,7 @@
     }
 
     &:focus-within {
-      outline: 2px solid blue;
+      outline: variables.$focus-outline;
     }
   }
 }
@@ -32,6 +32,6 @@
   justify-content: center;
 
   &:focus {
-    outline: 2px solid blue;
+    outline: variables.$focus-outline;
   }
 }

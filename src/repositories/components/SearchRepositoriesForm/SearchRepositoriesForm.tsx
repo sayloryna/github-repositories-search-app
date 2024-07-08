@@ -16,6 +16,8 @@ const SearchRepositoriesForm = (): React.ReactElement => {
 
   return (
     <SearchBar
+      autofocus
+      required
       buttonLabel="Search user repositories"
       className=""
       maxLength={39}

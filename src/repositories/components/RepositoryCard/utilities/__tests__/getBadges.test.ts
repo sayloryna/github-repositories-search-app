@@ -3,10 +3,10 @@ import getBadge from "../getBadge";
 
 describe("Given a getBadge function", () => {
   describe("When it receives 'HTML'", () => {
-    it("Should return 'https://img.shields.io/badge/-HTML-ffffff?style=flat-square&logo=HTML5&logoColor=black'", () => {
+    it("Should return 'https://img.shields.io/badge/-HTML-white?style=flat-square&logo=HTML5&logoColor=black'", () => {
       const language = "HTML";
       const expectedBadge =
-        "https://img.shields.io/badge/-HTML-ffffff?style=flat-square&logo=HTML5&logoColor=black";
+        "https://img.shields.io/badge/-HTML-white?style=flat-square&logo=HTML5&logoColor=black";
 
       const badge = getBadge(language);
 
@@ -15,10 +15,10 @@ describe("Given a getBadge function", () => {
   });
 
   describe("When it receives 'CSS'", () => {
-    it("Should return 'https://img.shields.io/badge/-CSS-ffffff?style=flat-square&logo=CSS3&logoColor=black'", () => {
+    it("Should return 'https://img.shields.io/badge/-CSS-white?style=flat-square&logo=CSS3&logoColor=black'", () => {
       const language = "CSS";
       const expectedBadge =
-        "https://img.shields.io/badge/-CSS-ffffff?style=flat-square&logo=CSS3&logoColor=black";
+        "https://img.shields.io/badge/-CSS-white?style=flat-square&logo=CSS3&logoColor=black";
 
       const badge = getBadge(language);
 
@@ -27,10 +27,10 @@ describe("Given a getBadge function", () => {
   });
 
   describe("When it receives 'JavaScript'", () => {
-    it("Should return 'https://img.shields.io/badge/-JavaScript-ffffff?style=flat-square&logo=JavaScript&logoColor=black'", () => {
+    it("Should return 'https://img.shields.io/badge/-JavaScript-white?style=flat-square&logo=JavaScript&logoColor=black'", () => {
       const language = "JavaScript";
       const expectedBadge =
-        "https://img.shields.io/badge/-JavaScript-ffffff?style=flat-square&logo=JavaScript&logoColor=black";
+        "https://img.shields.io/badge/-JavaScript-white?style=flat-square&logo=JavaScript&logoColor=black";
 
       const badge = getBadge(language);
 

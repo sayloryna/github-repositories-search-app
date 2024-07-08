@@ -1,6 +1,8 @@
+@use "../../../styles/variables";
+
 .form__searchbox.form__searchbox--small {
-  background-color: #e0e0e040;
+  background-color: variables.$form-background-color;
   padding: 5px;
   border: none;
-  border-radius: 10px;
+  border-radius: variables.$border-main-radius;
 }

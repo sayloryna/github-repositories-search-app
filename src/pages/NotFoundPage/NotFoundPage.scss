@@ -1,8 +1,10 @@
+@use "../../styles/variables";
+
 .not-found {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: variables.$gap-main;
 
   &__message {
     font-size: 2rem;
