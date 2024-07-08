@@ -11,6 +11,22 @@ const RepositoryLanguageFilterForm = (): React.ReactElement => {
   const initialFilter = "";
   const [filter, setFilter] = useState(initialFilter);
 
+  const loadOptions = languagesUsed.map((language) => {
+    if (!language) {
+      return (
+        <option key="all" value={""}>
+          All
+        </option>
+      );
+    }
+
+    return (
+      <option key={language} id="language" value={language}>
+        {language}
+      </option>
+    );
+  });
+
   return (
     <form
       className="selector-form"
@@ -32,20 +48,10 @@ const RepositoryLanguageFilterForm = (): React.ReactElement => {
           dispatch(action);
         }}
       >
-        <option defaultChecked value={""}>
+        <option defaultChecked key="language" value={""}>
           Language
         </option>
-        {languagesUsed.map((language) => {
-          if (!language) {
-            return <option value={""}>All</option>;
-          }
-
-          return (
-            <option id="language" value={language}>
-              {language}
-            </option>
-          );
-        })}
+        {loadOptions}
       </select>
       <button type="submit" hidden></button>
     </form>

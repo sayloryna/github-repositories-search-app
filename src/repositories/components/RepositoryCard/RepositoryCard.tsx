@@ -18,14 +18,26 @@ const RepositoryCard = ({
   return (
     <article className="repository">
       <div className="header">
-        <img
-          className="repository__owner-avatar"
-          src={repository.owner.avatar_url}
-          alt="user's avatar"
-          height="100"
-          width="100"
-        />
-        <a href={repository.html_url} target="blank" title="See on github">
+        <a
+          className="repository__link"
+          href={repository.owner.html_url}
+          target="blank"
+          title="Visit profile in github"
+        >
+          <img
+            className="repository__owner-avatar"
+            src={repository.owner.avatar_url}
+            alt="user's avatar"
+            height="100"
+            width="100"
+          />
+        </a>
+        <a
+          className="repository__link"
+          href={repository.html_url}
+          target="blank"
+          title="See on github"
+        >
           <h2 className="repository__name">{repository.name}</h2>
         </a>
       </div>

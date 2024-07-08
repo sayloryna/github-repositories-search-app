@@ -1,23 +1,29 @@
-.repository {
-  display: flex;
-  color: #222;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  border-top: 1px solid #aaa;
+@use "../../../styles/variables";
 
+.repository {
+  color: variables.$font-main-color;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-main;
+  width: 100%;
+  border-top: variables.$border-main;
   padding: 10px;
 
+  &__link:focus {
+    outline: variables.$focus-outline;
+    border-radius: variables.$border-main-radius;
+  }
+
   &__owner-avatar {
-    width: auto;
-    height: 50px;
+    width: 50px;
+    height: auto;
     border-radius: 50%;
-    border: 1px solid #aaa;
+    border: variables.$border-main;
   }
 
   &__name {
     overflow-wrap: anywhere;
-    color: #0969da;
+    color: variables.$font-repository-color;
     font-size: 1.6rem;
   }
 
@@ -28,9 +34,8 @@
 
   &__language {
     width: auto;
-    min-width: 180px;
-
-    height: 1.9rem;
+    height: 1.8rem;
+    min-width: 150px;
 
     &-badge {
       height: 100%;
@@ -39,23 +44,22 @@
   }
 
   &__update {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }
 
 .header {
-  width: fit-content;
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: variables.$gap-main;
 }
 
 .footer {
   display: flex;
   align-items: center;
-  gap: 30px;
 
-  @media (width < 400px) {
-    gap: 5px;
+  @media (width > 450px) {
+    gap: 30px;
   }
 }

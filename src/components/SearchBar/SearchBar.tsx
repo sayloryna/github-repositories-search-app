@@ -6,11 +6,13 @@ type SearchBarProps = {
   submitAction: () => void;
   placeholder: string;
   className: string;
-  inputClassName?: string;
   buttonLabel: string;
   maxLength: number;
   state: string;
   setState: React.Dispatch<React.SetStateAction<string>>;
+  inputClassName?: string;
+  required?: boolean;
+  autofocus?: boolean;
 };
 
 const SearchBar = ({
@@ -22,6 +24,8 @@ const SearchBar = ({
   maxLength = 200,
   state,
   setState,
+  required = false,
+  autofocus = false,
 }: SearchBarProps): React.ReactElement => {
   return (
     <form
@@ -33,6 +37,8 @@ const SearchBar = ({
       }}
     >
       <input
+        autoFocus={autofocus}
+        required={required}
         maxLength={maxLength}
         aria-label={placeholder}
         className={"form__searchbox__input" + " " + inputClassName}

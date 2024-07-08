@@ -1,16 +1,18 @@
+@use "../../../styles/variables";
+
 .selector-form {
   height: 100%;
-  border: 1px solid #aaa;
+  border: variables.$border-main;
   padding: 0 5px;
-  border-radius: 10px;
-  background-color: #e0e0e040;
+  border-radius: variables.$border-main-radius;
+  background-color: variables.$form-background-color;
 
   &:focus-within {
-    outline: 2px solid blue;
+    outline: variables.$focus-outline;
   }
 
   &__group {
-    color: #111;
+    color: variables.$font-main-color;
     padding: 5px;
     display: flex;
     justify-content: center;
