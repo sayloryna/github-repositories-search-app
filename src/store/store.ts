@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { repositoriesReducer } from "../repositories/slice/repositoriesSlice";
-import { uiReducer } from "../components/ui/uiSlice/uiSlice";
+import { uiReducer } from "../ui/uiSlice/uiSlice";
 
 export const store = configureStore({
   reducer: { repositories: repositoriesReducer, ui: uiReducer },
