@@ -18,13 +18,13 @@ const initialState: RepositoriesState = {
   repositoryLanguageFilter: "",
 };
 
-export const mockRepositorySlice = createSlice({
+export const mockRepositoriesSlice = createSlice({
   name: "mockrepositories",
   initialState,
   reducers: {},
 });
 
-const repositoriesReducer = mockRepositorySlice.reducer;
+const repositoriesReducer = mockRepositoriesSlice.reducer;
 
 export const mockStore = configureStore({
   reducer: { repositories: repositoriesReducer, ui: uiReducer },
