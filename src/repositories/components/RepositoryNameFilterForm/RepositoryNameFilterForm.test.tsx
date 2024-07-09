@@ -1,13 +1,13 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { mockStore } from "../../../mocks/mockStore";
-import { MemoryRouter } from "react-router-dom";
 import RepositoryNameFilterForm from "./RepositoryNameFilterForm";
 
 describe("Given a RepositoryNameFilterForm component", () => {
   describe("When rendered", () => {
-    it("Then it should show an 'Find Repository..' form control ", () => {
+    it("Should show an 'Find Repository..' form control ", () => {
       const expectedText = /find Repository../i;
 
       render(
@@ -23,7 +23,7 @@ describe("Given a RepositoryNameFilterForm component", () => {
       expect(input).toBeVisible();
     });
 
-    it("Then it should show an 'Find repository' button ", () => {
+    it("Should show an 'Find repository' button ", () => {
       const expectedName = /find repository/i;
 
       render(
