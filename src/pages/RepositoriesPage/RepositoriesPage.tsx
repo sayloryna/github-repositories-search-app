@@ -11,11 +11,13 @@ import Loading from "../../components/Loading/Loading";
 const RepositoriesPage = (): React.ReactElement => {
   const { username } = useParams();
   const { isLoading } = useAppSelector((state) => state.ui);
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   const { repositoryNameFilter, repositoryLanguageFilter } = useAppSelector(
     (state) => state.repositories,
   );
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const initialState: Repository[] = [];
   const [repositories, setRepositories] = useState(initialState);
@@ -48,9 +50,11 @@ const RepositoriesPage = (): React.ReactElement => {
         repositoryLanguageFilter.toLowerCase(),
       ),
   );
+
   if (isLoading) {
     return <Loading />;
   }
+
   return <RepositoriesList repositories={filteredRepositories} />;
 };
 
