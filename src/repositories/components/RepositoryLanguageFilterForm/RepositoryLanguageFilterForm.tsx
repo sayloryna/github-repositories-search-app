@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-
-import "./RepositoryLanguageFilterForm.scss";
 import { loadRepositoryLanguageFilterActionCreator } from "../../slice/repositoriesSlice";
+import "./RepositoryLanguageFilterForm.scss";
 
 const RepositoryLanguageFilterForm = (): React.ReactElement => {
   const { languagesUsed } = useAppSelector((state) => state.repositories);
@@ -27,6 +26,14 @@ const RepositoryLanguageFilterForm = (): React.ReactElement => {
     );
   });
 
+  const changeAction = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    setFilter(event.target.value);
+    const action = loadRepositoryLanguageFilterActionCreator(
+      event.target.value,
+    );
+    dispatch(action);
+  };
+
   return (
     <form
       className="selector-form"
@@ -40,13 +47,7 @@ const RepositoryLanguageFilterForm = (): React.ReactElement => {
         id="language"
         aria-label="Select a Language to filter"
         value={filter}
-        onChange={(event) => {
-          setFilter(event.target.value);
-          const action = loadRepositoryLanguageFilterActionCreator(
-            event.target.value,
-          );
-          dispatch(action);
-        }}
+        onChange={changeAction}
       >
         <option defaultChecked key="language" value={""}>
           Language
