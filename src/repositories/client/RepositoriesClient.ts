@@ -6,7 +6,7 @@ export class RepositoriesClient implements RepositoriesClientStructure {
   async getAllRepos(username: string): Promise<Repository[]> {
     try {
       const response = await axios.get(
-        `https://api.github.com/users/${username}/repos`,
+        `${import.meta.env.VITE_API_URL}/${username}/repos`,
       );
 
       const repos = response.data as Repository[];

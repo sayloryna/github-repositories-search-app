@@ -16,19 +16,17 @@ const RepositoryNameFilterForm = (): React.ReactElement => {
     dispatch(loadFilter);
   };
   return (
-    <>
-      <SearchBar
-        autofocus
-        maxLength={100}
-        className=" form__searchbox--small"
-        buttonLabel="Find Repository"
-        inputClassName="repository-name"
-        placeholder="Find Repository..."
-        submitAction={loadRepositories}
-        setState={setFilter}
-        state={filter}
-      />
-    </>
+    <SearchBar
+      autofocus
+      maxLength={100}
+      className=" form__searchbox--small"
+      buttonLabel="Find Repository"
+      inputClassName="repository-name"
+      placeholder="Find Repository..."
+      submitAction={loadRepositories}
+      setState={setFilter}
+      state={filter}
+    />
   );
 };
 
