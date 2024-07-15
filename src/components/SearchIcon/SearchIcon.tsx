@@ -1,4 +1,5 @@
 import React from "react";
+
 type SearchIconProps = {
   name: string;
   color: string;

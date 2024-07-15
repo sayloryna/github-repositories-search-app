@@ -1,12 +1,13 @@
+import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import RepositoryLanguageFilterForm from "./RepositoryLanguageFilterForm";
-import { describe, it, expect, beforeEach } from "vitest";
 import { mockStore } from "../../../mocks/mockStore";
 
 const user = userEvent.setup();
+
 beforeEach(() => {
   render(
     <Provider store={mockStore}>
@@ -17,7 +18,7 @@ beforeEach(() => {
 
 describe("Given a RepositoryLanguageFilterForm component", () => {
   describe("When rendered", () => {
-    it("Should show the input control Select a Language to filter", () => {
+    it("Should show the input control 'Select a Language to filter'", () => {
       const expectedName = "Select a Language to filter";
 
       const input = screen.getByLabelText(expectedName);
@@ -25,7 +26,7 @@ describe("Given a RepositoryLanguageFilterForm component", () => {
       expect(input).toBeVisible();
     });
 
-    it("updates the selected language and dispatches an action when changed", async () => {
+    it("Updates the selected language and dispatches an action when changed", async () => {
       const language = "JavaScript";
 
       const select = screen.getByRole("combobox");

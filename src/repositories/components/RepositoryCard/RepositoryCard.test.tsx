@@ -1,7 +1,7 @@
+import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
 import RepositoryCard from "./RepositoryCard";
 import { testRepository1 } from "../../../mocks/mockRepositories";
-import { render, screen } from "@testing-library/react";
 
 describe("Given a RepositoryCard component", () => {
   describe("When it receives the testRepository1 and rendered", () => {

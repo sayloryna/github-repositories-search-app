@@ -28,7 +28,7 @@ const typeAndSubmit = async (text: string): Promise<void> => {
 
 describe("Given a SearchRepositoriesForm component", () => {
   describe("When rendered", () => {
-    it("Then it should show an 'username' form control ", () => {
+    it("Then it should show a 'username' form control ", () => {
       const expectedText = /username/i;
 
       render(
@@ -44,7 +44,7 @@ describe("Given a SearchRepositoriesForm component", () => {
       expect(input).toBeVisible();
     });
 
-    it("Then it should show an 'Search user repositories' button ", () => {
+    it("Then it should show a 'Search user repositories' button ", () => {
       const expectedName = /search user repositories/i;
 
       render(
@@ -64,7 +64,7 @@ describe("Given a SearchRepositoriesForm component", () => {
   });
 
   describe("And the user submits with 'mockUsername' ", () => {
-    it("it should show the text 'Couldn't find a user with that name'", async () => {
+    it("Should show the text 'Couldn't find a user with that name'", async () => {
       const expectedText = /couldn't find a user with that name/i;
 
       server.use(
@@ -88,7 +88,7 @@ describe("Given a SearchRepositoriesForm component", () => {
   });
 
   describe("And the user submits with 'mockUsername' but the fetch fails", () => {
-    it("it should show a heading with 'testRepository1'", async () => {
+    it("Should show a heading with 'testRepository1'", async () => {
       const expectedText = /testrepository1/i;
 
       render(

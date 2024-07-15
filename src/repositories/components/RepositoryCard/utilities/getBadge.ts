@@ -4,8 +4,8 @@ const getBadge = (language: string) => {
     window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   const backgroundColor = isDarkMode ? "black" : "white";
-
   const logoColor = isDarkMode ? "white" : "black";
+
   if (!language) {
     return "";
   }
@@ -17,6 +17,7 @@ const getBadge = (language: string) => {
   if (language === "CSS") {
     return `https://img.shields.io/badge/-CSS-${backgroundColor}?style=flat-square&logo=CSS3&logoColor=${logoColor}`;
   }
+
   return `https://img.shields.io/badge/-${language}-${backgroundColor}?style=flat-square&logo=${language}&logoColor=${logoColor}`;
 };
 
